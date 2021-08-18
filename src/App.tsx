@@ -1,24 +1,25 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ClassComp from './components/ClassComp';
+import FunctionComp from './components/FunctionComp';
+import Test from './components/Test';
 
 function App() {
+  const [state, setState] = React.useState(true);
+
+  const handleState = () => {
+    setState(!state);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={handleState}>show</button>
+      {state ?(<ClassComp title={"클래스형 컴포넌트"}/>):(<FunctionComp title={"함수형 컴포넌트"}/>)}
+
+      <br/><br/><br/><br/>
+
+      <Test/>
     </div>
   );
 }
